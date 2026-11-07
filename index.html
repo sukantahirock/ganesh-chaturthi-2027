@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganesh Chaturthi 2027 Countdown | Bappa Morya!</title>
+    <!-- Google Fonts for retro/festive look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Yatra+One&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1b4965 0%, #0b253a 100%);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            color: #333;
+        }
+
+        /* Poster Outer Frame */
+        .poster-card {
+            background-color: #f7ebb8;
+            background-image: radial-gradient(#dcb865 1px, transparent 1px);
+            background-size: 16px 16px;
+            width: 100%;
+            max-width: 480px;
+            border: 12px solid #005662;
+            outline: 5px solid #d4af37;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 0 40px rgba(184, 134, 11, 0.3);
+            text-align: center;
+            padding: 24px 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Vintage Frame Borders */
+        .poster-card::before {
+            content: '';
+            position: absolute;
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border: 2px solid #8b0000;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        /* Ganesha SVG Illustration */
+        .ganesha-wrapper {
+            margin: 0 auto 10px auto;
+            width: 170px;
+            height: 170px;
+            filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.25));
+            transition: transform 0.3s ease;
+        }
+        
+        .ganesha-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        /* Marathi Subtitle Banner */
+        .marathi-banner {
+            font-family: 'Yatra One', cursive;
+            color: #d80000;
+            font-size: 1.6rem;
+            margin: 4px 0 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-shadow: 1px 1px 0px #ffe599;
+        }
+
+        .trident-icon {
+            font-size: 1.2rem;
+            color: #d80000;
+        }
+
+        /* Outer Display Board */
+        .signboard {
+            background: #fff8e7;
+            border: 4px solid #1a365d;
+            border-radius: 12px;
+            padding: 16px 10px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.15), 0 6px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .main-days-count {
+            font-family: 'Rozha One', serif;
+            font-size: 2.5rem;
+            color: #0b3c5d;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        /* Detailed Time Grid */
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 2px dashed #0b3c5d;
+        }
+
+        .time-box {
+            background: #ffffff;
+            border: 2px solid #1a365d;
+            border-radius: 8px;
+            padding: 6px 2px;
+        }
+
+        .time-num {
+            font-family: 'Rozha One', serif;
+            font-size: 1.3rem;
+            color: #b70909;
+            font-weight: bold;
+        }
+
+        .time-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #555;
+            letter-spacing: 0.5px;
+        }
+
+        /* Target Date Banner */
+        .target-date {
+            font-family: 'Rozha One', serif;
+            color: #b70909;
+            font-size: 2.2rem;
+            margin-top: 10px;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        }
+
+        /* Audio & Interactive Button */
+        .btn-group {
+            margin-top: 18px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #d80000 0%, #900000 100%);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(216, 0, 0, 0.4);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(216, 0, 0, 0.5);
+            background: linear-gradient(135deg, #ff1a1a 0%, #b30000 100%);
+        }
+
+        .action-btn:active {
+            transform: translateY(0);
+        }
+
+        .footer-text {
+            margin-top: 14px;
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Responsive scaling */
+        @media (max-width: 400px) {
+            .poster-card { padding: 18px 12px; }
+            .ganesha-wrapper { width: 140px; height: 140px; }
+            .main-days-count { font-size: 2.1rem; }
+            .target-date { font-size: 1.8rem; }
+            .marathi-banner { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster-card">
+        <!-- Ganesha Artwork (Embedded Lightweight SVG) -->
+        <div class="ganesha-wrapper">
+            <svg viewBox="0 0 200 200" width="100%" height="100%">
+                <!-- Crown (Mukut) -->
+                <path d="M 100,10 L 125,50 L 140,40 L 120,80 L 80,80 L 60,40 L 75,50 Z" fill="#FFD700" stroke="#B8860B" stroke-width="3"/>
+                <circle cx="100" cy="35" r="8" fill="#D80000"/>
+                <circle cx="100" cy="35" r="4" fill="#FFD700"/>
+                <path d="M 85,70 Q 100,60 115,70" stroke="#D80000" stroke-width="4" fill="none"/>
+
+                <!-- Ears -->
+                <path d="M 70,85 C 20,70 10,130 75,125 Z" fill="#FFA07A" stroke="#E9967A" stroke-width="3"/>
+                <path d="M 130,85 C 180,70 190,130 125,125 Z" fill="#FFA07A" stroke="#E9967A" stroke-width="3"/>
+
+                <!-- Face & Head -->
+                <ellipse cx="100" cy="105" rx="35" ry="30" fill="#FFA07A"/>
+                
+                <!-- Eyes -->
+                <ellipse cx="85" cy="95" rx="5" ry="7" fill="#FFF"/>
+                <circle cx="86" cy="96" r="3" fill="#000"/>
+                <ellipse cx="115" cy="95" rx="5" ry="7" fill="#FFF"/>
+                <circle cx="114" cy="96" r="3" fill="#000"/>
+                
+                <!-- Tilak -->
+                <path d="M 94,82 Q 100,92 106,82 Q 100,75 94,82 Z" fill="#D80000"/>
+                <line x1="90" y1="84" x2="110" y2="84" stroke="#FFD700" stroke-width="2"/>
+
+                <!-- Trunk (Sond) -->
+                <path d="M 95,115 Q 92,150 110,155 Q 125,160 120,145 Q 115,138 107,140" fill="none" stroke="#FFA07A" stroke-width="14" stroke-linecap="round"/>
+                <path d="M 95,115 Q 92,150 110,155 Q 125,160 120,145 Q 115,138 107,140" fill="none" stroke="#E9967A" stroke-width="2" stroke-linecap="round"/>
+                
+                <!-- Tusk (Dant) -->
+                <path d="M 87,120 L 78,125 L 88,124 Z" fill="#FFF" stroke="#DDD" stroke-width="1"/>
+
+                <!-- Hands holding frame -->
+                <circle cx="48" cy="165" r="12" fill="#FFA07A" stroke="#E9967A" stroke-width="2"/>
+                <circle cx="152" cy="165" r="12" fill="#FFA07A" stroke="#E9967A" stroke-width="2"/>
+            </svg>
+        </div>
+
+        <!-- Marathi Slogan -->
+        <div class="marathi-banner">
+            <span class="trident-icon">➔</span>
+            <span>येतो परत</span>
+            <span class="trident-icon">←</span>
+        </div>
+
+        <!-- Main Display Board -->
+        <div class="signboard">
+            <div class="main-days-count" id="days-count">--- DAYS LEFT</div>
+            
+            <div class="time-grid">
+                <div class="time-box">
+                    <div class="time-num" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-num" id="minutes">00</div>
+                    <div class="time-label">Mins</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-num" id="seconds">00</div>
+                    <div class="time-label">Secs</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-num" id="marathi-num">---</div>
+                    <div class="time-label">मराठी दिवस</div>
+                </div>
+            </div>
+
+            <div class="target-date">04 Sep 2027</div>
+        </div>
+
+        <!-- Interactive Buttons -->
+        <div class="btn-group">
+            <button class="action-btn" onclick="celebrate()">
+                <span>🎉</span> Chant "Ganpati Bappa!"
+            </button>
+        </div>
+
+        <div class="footer-text">
+            🪔 Wishing Joy & Prosperity to Everyone 🪔
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        // Target Date: Ganesh Chaturthi 2027 (4th September 2027)
+        const targetDate = new Date('September 4, 2027 00:00:00').getTime();
+
+        // Convert English numbers to Devanagari/Marathi numbers
+        function toDevanagari(num) {
+            const devanagariDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+            return num.toString().split('').map(digit => devanagariDigits[digit] || digit).join('');
+        }
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days-count').innerText = `${days} DAYS LEFT`;
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+                document.getElementById('marathi-num').innerText = toDevanagari(days);
+            } else {
+                document.getElementById('days-count').innerText = "GANPATI BAPPA MORYA!";
+                document.querySelector('.time-grid').style.display = 'none';
+            }
+        }
+
+        // Celebrate Sound & Alert
+        function celebrate() {
+            alert("🚩 Ganpati Bappa Morya! Mangal Murti Morya! 🚩\nWishing you and your family a blessed Ganesh Chaturthi 2027!");
+        }
+
+        // Initial run and 1-second interval
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
